@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        benmcollins libjwt 1.9.0 v
+github.setup        benmcollins libjwt 1.10.2 v
 revision            1
 
 platforms           darwin
@@ -16,9 +16,9 @@ description         C library for Javascript Web Tokens (JWT's)
 long_description    {*}${description}
 
 
-checksums           rmd160  9745d46848cec2a49c251a61d12e5af8cec5047c \
-                    sha256  8ca0e7faa09e36106a004cada03f0a047bafbd2b976add1b3bb8a8ffaeee6297 \
-                    size    92772
+checksums           rmd160  016e2ebbd72c7cb1413838e5a3efe2e177ff79f7 \
+                    sha256  1f39055910b0350acc095efb1fb3c7030b9eac7d73e9035d687b3df3e44c71c3 \
+                    size    95382
 
 use_autoreconf      yes
 
