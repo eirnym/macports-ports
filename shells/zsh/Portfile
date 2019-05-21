@@ -1,10 +1,13 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem              1.0
+PortGroup               github 1.0
 
 name                    zsh
 version                 5.8
 revision                1
+github.setup            zsh-users zsh ${version} zsh-
+github.tarball_from releases
 categories              shells
 platforms               darwin
 license                 Permissive
@@ -23,21 +26,8 @@ depends_lib             port:gdbm \
                         port:ncurses \
                         port:pcre
 
-master_sites            sourceforge:project/zsh/zsh/${version}:src \
-                        sourceforge:project/zsh/zsh-doc/${version}:doc
-foreach mirror {        https://www.zsh.org/pub
-                        ftp://ftp.zsh.org/pub
-                        ftp://ftp.fu-berlin.de/unix/shells/zsh
-                        ftp://ftp.funet.fi/pub/unix/shells/zsh
-                        ftp://ftp.icm.edu.pl/vol/rzm4/zsh
-                        ftp://sunsite.icm.edu.pl/pub/unix/shells/zsh
-} {
-    master_sites-append ${mirror}:src ${mirror}:doc
-}
-
 use_xz                  yes
-distfiles               ${distname}${extract.suffix}:src \
-                        ${distname}-doc${extract.suffix}:doc
+distfiles               ${distname}${extract.suffix}:src
 
 checksums               ${distname}${extract.suffix} \
                             rmd160  4d387cbdaf9db52e24678871cd399c3bd5564429 \
