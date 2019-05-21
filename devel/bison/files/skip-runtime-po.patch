@@ -6,7 +6,7 @@ Index: Makefile.in
  top_srcdir = @top_srcdir@
  AUTOMAKE_OPTIONS = subdir-objects
  ACLOCAL_AMFLAGS = -I m4
--SUBDIRS = po runtime-po .
+-SUBDIRS = po runtime-po gnulib-po .
 +SUBDIRS = po .
  aclocal_DATA = m4/bison-i18n.m4
  
