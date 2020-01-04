@@ -2,10 +2,11 @@
 
 PortSystem          1.0
 PortGroup           active_variants 1.1
+PortGroup           meson 1.0
 
 name                gobject-introspection
-version             1.60.2
-revision            6
+version             1.68.0
+revision            0
 set branch          [join [lrange [split ${version} .] 0 1] .]
 categories          gnome
 platforms           darwin
@@ -20,9 +21,9 @@ homepage            https://wiki.gnome.org/Projects/GObjectIntrospection
 master_sites        gnome:sources/${name}/${branch}/
 use_xz              yes
 
-checksums           rmd160  6455f1b5e4427b8f0a26efb94597a476ed9ca96e \
-                    sha256  ffdfe2368fb2e34a547898b01aac0520d52d8627fdeb1c306559bcb503ab5e9c \
-                    size    1285000
+checksums           rmd160  110995510a49188c157e885f56f5f39a16462747 \
+                    sha256  d229242481a201b84a0c66716de1752bca41db4133672cfcfb37c93eb6e54a27 \
+                    size    1019732
 
 depends_build       port:pkgconfig \
                     port:autoconf-archive
@@ -31,34 +32,12 @@ depends_lib         path:lib/pkgconfig/cairo.pc:cairo \
                     path:lib/pkgconfig/glib-2.0.pc:glib2 \
                     port:libffi \
                     port:py39-mako \
-                    port:py39-markdown
+                    port:py39-markdown\
+                    port:bison
 
 depends_run         bin:glibtool:libtool
 
-patchfiles          no-env-shebang.patch \
-                    patch-fix-rpath-gir-typelib.diff \
-                    patch-fix-scanner-in-build-execution.diff \
-                    patch-giscanner_girparser_py.diff
-
-post-patch {
-    reinplace "s|libcairo-gobject.2.dylib|${prefix}/lib/libcairo-gobject.2.dylib|g" ${worksrcpath}/configure.ac
-    reinplace "s|@MP_LIB@|${prefix}/lib/|g" ${worksrcpath}/giscanner/shlibs.py
-}
-
 configure.python    ${prefix}/bin/python3.9
-
-# Use autoreconf to sync with our build tools.
-# The gtk-doc dependency is needed due to use of autoreconf -fvi, which
-# completely regenerates the build system, which uses gtkdocize.
-# TODO: check if not using -i with autoreconf works; if so, gtk-doc can
-# be removed. Also check if running only autoconf and automake is
-# sufficient, rather than a full autoreconf.
-depends_build-append    port:gtk-doc
-patchfiles-append   use-AC_PROG_CPP.patch
-use_autoreconf      yes
-autoreconf.args     -fvi
-
-build.args          CC="${configure.cc} ${configure.cc_archflags}" V=1
 
 platform darwin 8 {
     # GObject introspection doesn't build with tiger's make, #32358
