@@ -36,6 +36,9 @@ license_noconflict  gobject-introspection \
                     rust \
                     vala
 
+set pyversion       3.9
+depends_run         port:python[join [split ${pyversion} "."] ""]
+
 # cargo does not build on 10.7 or earlier
 # https://trac.macports.org/ticket/55794
 
@@ -103,13 +106,20 @@ gobject_introspection yes
 
 configure.args      --enable-vala=yes \
                     --disable-silent-rules \
-                    --disable-Bsymbolic
+                    --disable-Bsymbolic \
+                    --disable-gtk-doc
 
 configure.ldflags-append    -lobjc
 
 test.run            yes
 test.dir            ${worksrcpath}/tests
 test.target         check
+
+
+variant docs description "Build documentation" {
+   depends_build-append port:gtk-doc
+   configure.args-replace --disable-gtk-doc --enable-gtk-doc
+}
 
 post-destroot {
     set docdir ${prefix}/share/doc/${name}
