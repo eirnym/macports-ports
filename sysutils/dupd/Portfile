@@ -3,7 +3,7 @@
 PortSystem            1.0
 
 name                  dupd
-version               1.6
+version               1.7
 description           Convenient and fast CLI to find duplicate files.
 homepage              http://www.virkki.com/dupd
 license               GPL-3
@@ -19,8 +19,8 @@ maintainers           {@jvirkki virkki.com:jyri}
 long_description      Convenient and fast CLI to find duplicate files. Supports an interactive style for exploring duplicates in the filesystem.
 
 master_sites          http://www.virkki.com/dupd
-checksums             rmd160 624afff8a1ecf1633a6fea0e49dc99cb37e4efc8 \
-                      sha256 68bce4d5ac0b8a00ac50da65634950eb46fb11a571e546fb543fc6c6bf6b79da
+checksums             rmd160 95ee5dec4817a1ba9ce874edd0f74a6df5f55aba \
+                      sha256 547eb62931ca524e9966db0bb84cdc806c6a7fa8cbdcf9ac52b043df88ca222d
 
 destroot.destdir      INSTALL_PREFIX=${destroot}${prefix} \
                       MAN_BASE=${destroot}${prefix}/share/man
