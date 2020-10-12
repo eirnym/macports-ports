@@ -7,14 +7,14 @@ PortGroup                       xcodeversion 1.0
 
 name                            graphviz
 set my_name                     graphviz
-version                         2.40.1
+version                         2.44.1
 set thisbranch                  [strsed ${name} "g/^${my_name}//"]
 set otherbranch                 [expr {${thisbranch} eq {} ? {-devel} : {}}]
 categories                      graphics
 maintainers                     {ryandesign @ryandesign}
 license                         EPL-1
 homepage                        https://www.graphviz.org/
-master_sites                    ${homepage}pub/graphviz/stable/SOURCES/
+master_sites                    https://www2.graphviz.org/Packages/stable/portable_source/
 platforms                       darwin
 use_parallel_build              yes
 dist_subdir                     ${my_name}
@@ -30,15 +30,16 @@ long_description                Graphviz is ${description}. Graph visualization 
                                 simple text language, and produce output in a \
                                 variety of visual and text formats.
 
-checksums                       rmd160  8fc103fc519e07e9db522ec2f748838571c71acf \
-                                sha256  ca5218fade0204d59947126c38439f432853543b0818d9d728c589dfe7f3a421
+checksums                       rmd160  936275110c362ca17239d8084c452f6d1731cacf \
+                                sha256  8e1b34763254935243ccdb83c6ce108f531876d7a5dfd443f255e6418b8ea313 \
+                                size    34079677
 
 # graphviz needs Xcode 3.1+ to avoid the libGL error when building the smyrna variant
 # graphviz-gui needs Xcode 3.1.2+; see #18811
 minimum_xcodeversions           {9 3.1.2}
 
 if {${name} eq ${subport}} {
-revision                        4
+revision                        5
 
 conflicts                       graphviz${otherbranch}
 
@@ -59,7 +60,8 @@ depends_lib                     path:include/turbojpeg.h:libjpeg-turbo \
 depends_run                     port:urw-fonts
 
 patchfiles                      implicit.patch \
-                                libtool-tag.patch
+                                libtool-tag.patch \
+                                configure.ac.patch
 
 configure.args                  --disable-silent-rules \
                                 --with-codegens \
@@ -343,7 +345,7 @@ subport gvedit${thisbranch} {
     PortGroup                   app 1.0
     PortGroup                   qt4 1.0
     
-    revision                    1
+    revision                    0
 
     conflicts                   gvedit${otherbranch}
     
