@@ -35,7 +35,8 @@ if {${subport} ne "${name}-bootstrap"} {
 
     # can use cmake or cmake-devel; default to cmake.
     depends_build   port:pkgconfig \
-                    path:bin/cmake:cmake
+                    path:bin/cmake:cmake \
+                    bin:python3.9:python39
 
     depends_lib     path:lib/libssl.dylib:openssl \
                     port:curl \
