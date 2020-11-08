@@ -37,6 +37,7 @@ checksums           rmd160  766b9460b9e62b8152f431747c30c88c868c0c7e \
 set icu_cxx_version 201103L
 
 patchfiles-append   include.patch
+patchfiles-append   true.patch
 
 post-patch {
     reinplace "s|@ICONV_PREFIX@|${prefix}|" ${worksrcpath}/include/libxml/encoding.h
