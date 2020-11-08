@@ -5,7 +5,8 @@ PortGroup xcodeversion 1.0
 
 name            libsdl
 set my_name     SDL
-version         1.2.15-20200718
+version         1.2.15
+set version_suffix  20200718
 revision        1
 categories      devel multimedia
 platforms       macosx freebsd
@@ -23,7 +24,7 @@ long_description \
 homepage        http://www.libsdl.org/
 #master_sites    ${homepage}release/
 master_sites    sourceforge:project/macports/distfiles/${name}
-distname        ${my_name}-${version}_1
+distname        ${my_name}-${version}-${version_suffix}_1
 use_bzip2       yes
 
 checksums       rmd160 5c976d04b4a96e9fcb6c2b245ad09d6c18c52a8c \
