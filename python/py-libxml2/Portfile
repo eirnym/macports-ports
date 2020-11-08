@@ -39,8 +39,8 @@ if {${name} ne ${subport}} {
     }
 
     patchfiles              patch-python-libxml.c.diff \
-                            patch-setup.py.diff
-
+                            patch-setup.py.diff \
+                            types.patch
     post-destroot {
       set docdir ${prefix}/share/doc/${subport}
       xinstall -d ${destroot}${docdir}
