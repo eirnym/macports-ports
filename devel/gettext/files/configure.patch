@@ -29,14 +29,3 @@ diff -Naurp gettext-0.19.8.1.orig/gettext-runtime/configure gettext-0.19.8.1/get
    exit (2);
  }
  
-diff -Naurp gettext-0.19.8.1.orig/gettext-tools/configure gettext-0.19.8.1/gettext-tools/configure
---- gettext-tools/configure	2016-06-11 06:01:07.000000000 -0700
-+++ gettext-tools/configure	2020-07-19 22:07:03.000000000 -0700
-@@ -71937,6 +71937,7 @@ $ac_includes_default
- #ifdef HAVE_VFORK_H
- # include <vfork.h>
- #endif
-+#include <unistd.h>
- /* On some sparc systems, changes by the child to local and incoming
-    argument registers are propagated back to the parent.  The compiler
-    is told about this with #include <vfork.h>, but some compilers
