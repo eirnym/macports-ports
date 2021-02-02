@@ -6,8 +6,8 @@ PortGroup           meson 1.0
 name                gdk-pixbuf2
 set gname           gdk-pixbuf
 epoch               2
-version             2.42.2
-revision            2
+version             2.42.6
+revision            0
 license             LGPL
 set branch          [join [lrange [split ${version} .] 0 1] .]
 categories          graphics
@@ -23,13 +23,12 @@ long_description    ${description}
 
 master_sites        gnome:sources/${gname}/${branch}/
 
-checksums           rmd160  d4a4af99904e0ecfe08ba9f53ecfff1396dd3df3 \
-                    sha256  83c66a1cfd591d7680c144d2922c5955d38b4db336d7cd3ee109f7bcf9afef15 \
-                    size    6514352
+checksums           rmd160  9e01426ea380fa2ed6dd34410b8207a034792fb0 \
+                    sha256  c4a6b75b7ed8f58ca48da830b9fa00ed96d668d3ab4b1f723dcf902f78bde77f \
+                    size    7708484
 
 depends_build-append \
                     port:pkgconfig \
-                    port:gtk-doc \
                     port:libxslt
 
 depends_lib         path:lib/pkgconfig/glib-2.0.pc:glib2 \
@@ -50,7 +49,9 @@ compiler.c_standard 1999
 configure.ldflags-append -lintl
 
 configure.args      -Dx11=false \
-                    -Ddocs=true \
+                    -Ddocs=false \
+                    -Dgtk_doc=false \
+                    -Dman=false \
                     -Djasper=true
 
 if {![info exists universal_possible]} {
@@ -82,7 +83,16 @@ variant x11 {
     configure.args-replace  -Dx11=false -Dx11=true
 }
 
-default_variants    +x11
+variant docs {
+    depends_build-append      port:gtk-doc
+    configure.args-replace  -Ddocs=false -Ddocs=true
+    configure.args-replace  -Dman=false -Dman=true
+    configure.args-replace  -Dgtk_doc=false -Dgtk_doc=true
+}
+
+if {![variant_isset quartz]} {
+    default_variants    +x11
+}
 
 post-activate {
         system "${prefix}/bin/gdk-pixbuf-query-loaders --update-cache"
