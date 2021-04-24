@@ -375,7 +375,18 @@ subport openjdk14-openj9-large-heap {
 subport openjdk15 {
     version      15.0.2
     revision     1
-    replaced_by  openjdk16
+        set build    7
+
+    description  Open Java Development Kit 15 (AdoptOpenJDK) with HotSpot VM
+    long_description ${long_description_adoptopenjdk_hotspot}
+
+    master_sites https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-${version}%2B${build}/
+    distname     OpenJDK15U-jdk_x64_mac_hotspot_${version}_${build}
+    worksrcdir   jdk-${version}+${build}
+
+    checksums    rmd160  74950bb51052416c41fcc4e33db077919e504097 \
+                 sha256  d358a7ff03905282348c6c80562a4da2e04eb377b60ad2152be4c90f8d580b7f \
+                 size    195232978
 }
 
 # Remove after 2022-03-22
