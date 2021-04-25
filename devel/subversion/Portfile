@@ -1,7 +1,7 @@
 PortSystem 1.0
 
 name			subversion
-version			1.13.0
+version			1.14.1
 categories		devel
 platforms		darwin
 maintainers		nomaintainer
@@ -15,9 +15,9 @@ long_description	Subversion (svn) is a version control system designed to be \
 homepage		https://subversion.apache.org/
 master_sites		apache:subversion
 use_bzip2		yes
-checksums	rmd160	a6f2731a87d612b85d4a82571948150d09b2643a \
-		sha256	bc50ce2c3faa7b1ae9103c432017df98dfd989c4239f9f8270bb3a314ed9e5bd \
-		size	8508122
+checksums	rmd160	037b14fd7e47a470a3b4925a4fe925d866c8c718 \
+		sha256	2c5da93c255d2e5569fa91d92457fdb65396b0666fad4fd59b22e154d986e1a9 \
+		size	8504612
 
 depends_lib		port:expat \
 			port:apr port:apr-util \
