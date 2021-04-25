@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        mesonbuild meson 0.57.1
-revision            1
+github.setup        mesonbuild meson 0.57.2
+revision            0
 
 github.tarball_from releases
 license             Apache-2
@@ -23,9 +23,9 @@ long_description    Meson is a build system designed to optimize programmer prod
                     Valgrind, CCache and the like. It is both extremely fast, and, even more importantly, \
                     as user friendly as possible.
 
-checksums           rmd160  741aff38cfab30963efc044f47216fe688514760 \
-                    sha256  72e1c782ba9bda204f4a1ed57f98d027d7b6eb9414c723eebbd6ec7f1955c8a6 \
-                    size    1849222
+checksums           rmd160  8cf66e2b6cd4214cf6166d67fd4820de1f7776fb \
+                    sha256  3a83e7b1c5de94fa991ec34d9b198d94f38ed699d3524cb0fdf3b99fd23d4cc5 \
+                    size    1853721
 
 # as of verison 0.45.0,requires python 3.5 or better
 
@@ -72,7 +72,7 @@ platform darwin 8 {
     # and is therefore fragile. Keep pegged, and update occasionally
 
     github.setup        mesonbuild meson 0.55.3
-    revision            1
+    revision            0
     checksums           rmd160  b1e7f12184a7a61ae8bfa7ed210af8020d531009 \
                         sha256  6bed2a25a128bbabe97cf40f63165ebe800e4fcb46db8ab7ef5c2b5789f092a5 \
                         size    1740465
